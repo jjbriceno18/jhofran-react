@@ -19,3 +19,8 @@ if(musica2) {
 
 };
 console.log(musica2);
+
+export const exportar = 'hola mama';
+const defaultExport = 'hola papa';
+
+export default defaultExport;
