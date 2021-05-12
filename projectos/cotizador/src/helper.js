@@ -1,0 +1,28 @@
+
+export function obtenerDiferenciaYear(year) {
+    return new Date().getFullYear() - year
+}
+
+export function calcularMarca(marca) {
+    let incremento
+
+    switch (marca) {
+        case 'europea':
+            incremento = 1.30
+            break
+        case 'americana':
+            incremento = 1.15
+            break
+        case 'asiatica':
+            incremento = 1.05
+            break
+        default:
+            break
+    }
+
+    return incremento
+}
+
+export function obtenerPlan(plan) {
+    return (plan === 'basico') ? 1.20 : 1.50
+}
