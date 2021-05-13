@@ -2,6 +2,8 @@ import { useState } from 'react'
 import Header from './components/Header'
 import Formulario from './components/Formulario'
 import Resumen from './components/Resumen'
+import Resultado from './components/Resultado'
+import Spinner from './components/Spinner'
 
 
 
@@ -26,8 +28,9 @@ function App() {
       plan: ''
     }
   })
+  const [ cargando, guardarCargando ] = useState(false)
 
-  const { datos } = resumen
+  const { cotizacion, datos } = resumen
 
   return (
     <Contenedor>
@@ -38,11 +41,22 @@ function App() {
       <ContenedorFormulario>
         <Formulario 
           guardarResumen={guardarResumen}
+          guardarCargando={guardarCargando}
         />
 
-        <Resumen
-          datos={datos}
-        />
+        { cargando ? <Spinner/> : null}
+
+        { !cargando ?
+          <Resumen
+            datos={datos}
+          />: null
+        }
+
+        { !cargando ?
+          <Resultado
+            cotizacion={cotizacion}
+          /> : null
+        }
       </ContenedorFormulario>
     </Contenedor>
   );
